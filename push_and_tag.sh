@@ -25,7 +25,7 @@ docker push harbor.devops.indico.io/indico/$IMAGE_BASE
 docker rmi $PRIVATE_IMAGE gcr.io/new-indico/$IMAGE_BASE harbor.devops.indico.io/indico/$IMAGE_BASE
 
 #pull postgres-operator upgrade image
-IMAGE_BASE=$(basename $CONTROLLER_IMAGE_UPGRADE
+IMAGE_BASE=$(basename $CONTROLLER_IMAGE_UPGRADE)
 PRIVATE_IMAGE=$CRUNCHY_REGISTRY/crunchydata/$IMAGE_BASE
 docker pull $PRIVATE_IMAGE
 #push to gcr
@@ -36,7 +36,6 @@ docker tag $PRIVATE_IMAGE harbor.devops.indico.io/indico/$IMAGE_BASE
 docker push harbor.devops.indico.io/indico/$IMAGE_BASE
 #Remove Junk
 docker rmi $PRIVATE_IMAGE gcr.io/new-indico/$IMAGE_BASE harbor.devops.indico.io/indico/$IMAGE_BASE
-
 
 for ri in $RELATED_IMAGES;
 do
