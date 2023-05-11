@@ -37,6 +37,7 @@ docker push harbor.devops.indico.io/indico/$IMAGE_BASE
 #Remove Junk
 docker rmi $PRIVATE_IMAGE gcr.io/new-indico/$IMAGE_BASE harbor.devops.indico.io/indico/$IMAGE_BASE
 
+
 for ri in $RELATED_IMAGES;
 do
     IMAGE=$ri
@@ -52,4 +53,3 @@ do
     #Remove Junk
     docker rmi $PRIVATE_IMAGE gcr.io/new-indico/$IMAGE_BASE harbor.devops.indico.io/indico/$IMAGE_BASE
 done
-
