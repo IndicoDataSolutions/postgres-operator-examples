@@ -44,6 +44,7 @@ steps:
     when:
       branch:
         - main
+        - dop-1608
         
   - name: push helm charts
     image: alpine/helm
