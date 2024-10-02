@@ -63,6 +63,8 @@ pipeline:
                       GCR_CREDENTIALS: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/devops_gcr_credentials#data")>
                       CRUNCHY_PASSWORD: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/crunchy_sa#password")>
                       CRUNCHY_USERNAME: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/crunchy_sa#username")>
+                      HARBOR_PASSWORD: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/harbor-push-token#password")>
+                      HARBOR_USERNAME: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/harbor-push-token#username")>
               - step:
                   type: Run
                   name: push helm charts
