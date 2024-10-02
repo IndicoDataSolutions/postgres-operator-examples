@@ -37,8 +37,8 @@ pipeline:
                     image: library/docker:dind
                     shell: Sh
                     privileged: true
-                    entrypoint:
-                      - "--storage-driver=vfs --tls=false"
+                    envVariables:
+                      DOCKER_TLS_CERTDIR: ""
                     resources:
                       limits:
                         memory: 2G
