@@ -37,8 +37,6 @@ pipeline:
                     image: library/docker:dind
                     shell: Sh
                     privileged: true
-                    envVariables:
-                      DOCKER_TLS_CERTDIR: ""
                     resources:
                       limits:
                         memory: 2G
@@ -52,7 +50,10 @@ pipeline:
                     image: library/docker:latest
                     shell: Sh
                     command: |-
-                      sleep 3000
+                      while ! docker ps ;do
+                            echo "Docker not available yet"
+                      done
+                      echo "Docker Service Ready"
                       docker ps
                       apk update && apk add curl python3 py3-pip
                       pip3 install shyaml --break-system-packages
