@@ -79,3 +79,6 @@ pipeline:
           caching:
             enabled: false
             paths: []
+          sharedPaths:
+            - /var/run
+            - /var/lib/docker
