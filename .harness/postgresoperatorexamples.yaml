@@ -62,6 +62,7 @@ pipeline:
                       GCR_CREDENTIALS: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/devops_gcr_credentials#data")>
                       CRUNCHY_PASSWORD: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/crunchy_sa#password")>
                       CRUNCHY_USERNAME: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/crunchy_sa#username")>
+                      DOCKER_HOST: tcp://localhost:2375
               - step:
                   type: Run
                   name: push helm charts
