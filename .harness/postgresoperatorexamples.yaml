@@ -39,6 +39,10 @@ pipeline:
                     privileged: true
                     entrypoint:
                       - "--storage-driver=vfs --tls=false"
+                    resources:
+                      limits:
+                        memory: 2G
+                        cpu: "2"
               - step:
                   type: Run
                   name: push containers
