@@ -85,7 +85,8 @@ pipeline:
                       USERNAME: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/harbor-push-token#username")>
                     resources:
                       limits:
-                        memory: 2G
+                        memory: 6G
+                        cpu: "1"
           caching:
             enabled: false
             paths: []
