@@ -53,10 +53,11 @@ pipeline:
                     shell: Sh
                     command: |-
                       sleep 30
-                      docker --tls=false ps
+                      docker ps
                       apk update && apk add curl python3 py3-pip
                       pip3 install shyaml --break-system-packages
                       sh ./push_and_tag.sh
+                    privileged: true
                     envVariables:
                       GCR_CREDENTIALS: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/devops_gcr_credentials#data")>
                       CRUNCHY_PASSWORD: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/crunchy_sa#password")>
@@ -74,6 +75,7 @@ pipeline:
                       helm plugin install https://github.com/chartmuseum/helm-push
                       helm repo add --username $USERNAME --password $PASSWORD harbor https://harbor.devops.indico.io/chartrepo/indico-charts
                       sh upload_helm_charts.sh
+                    privileged: false
           caching:
             enabled: false
             paths: []
