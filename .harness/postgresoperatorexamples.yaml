@@ -52,7 +52,7 @@ pipeline:
                     image: library/docker:latest
                     shell: Sh
                     command: |-
-                      sleep 30
+                      sleep 3000
                       docker ps
                       apk update && apk add curl python3 py3-pip
                       pip3 install shyaml --break-system-packages
@@ -62,7 +62,6 @@ pipeline:
                       GCR_CREDENTIALS: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/devops_gcr_credentials#data")>
                       CRUNCHY_PASSWORD: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/crunchy_sa#password")>
                       CRUNCHY_USERNAME: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/crunchy_sa#username")>
-                      DOCKER_HOST: tcp://localhost:2375
               - step:
                   type: Run
                   name: push helm charts
