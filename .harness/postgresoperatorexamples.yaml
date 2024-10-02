@@ -46,8 +46,8 @@ pipeline:
                   name: push containers
                   identifier: push_containers
                   spec:
-                    connectorRef: account.dockerhubproxy
-                    image: library/docker:latest
+                    connectorRef: account.harbor
+                    image: harbor.devops.indico.io/dockerhub-proxy/library/docker:latest
                     shell: Sh
                     command: |-
                       while ! docker ps ;do
