@@ -13,7 +13,7 @@ pipeline:
   stages:
     - stage:
         name: devops-service
-        identifier: push_containers
+        identifier: devops_service
         description: ""
         type: CI
         spec:
@@ -83,6 +83,9 @@ pipeline:
                       HELM_EXPERIMENTAL_OCI: "1"
                       PASSWORD: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/harbor-push-token#password")>
                       USERNAME: <+secrets.getValue("account.hashicorpvault://vaulttoolsdrone/harbor-push-token#username")>
+                    resources:
+                      limits:
+                        memory: 2G
           caching:
             enabled: false
             paths: []
