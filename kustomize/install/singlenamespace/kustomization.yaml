@@ -1,16 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 namespace: postgres-operator
 
 labels:
-- includeSelectors: false
-  includeTemplates: true
+- includeTemplates: true
   pairs:
     app.kubernetes.io/name: pgo
-    app.kubernetes.io/version: 5.7.0
-- includeSelectors: true
-  includeTemplates: true
-  pairs:
+    # The version below should match the version on the PostgresCluster CRD
+    app.kubernetes.io/version: 5.6.0
     postgres-operator.crunchydata.com/control-plane: postgres-operator
 
 resources:
@@ -18,6 +16,10 @@ resources:
 - ../rbac/namespace
 - ../manager
 
-components:
-- ../components/images-by-tag
-- ../components/single-namespace
+images:
+- name: postgres-operator
+  newName: registry.developers.crunchydata.com/crunchydata/postgres-operator
+  newTag: ubi8-5.6.0-0
+
+patches:
+- path: manager-target.yaml
